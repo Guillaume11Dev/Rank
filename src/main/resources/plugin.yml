@@ -1,0 +1,4 @@
+name: Rank
+version: '${project.version}'
+main: fr.guillaume.rank.RankJavaPlugin
+api-version: 1.19
