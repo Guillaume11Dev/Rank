@@ -37,6 +37,8 @@ public final class Rank {
             team.setPrefix(rankList.getPrefix());
             team.setSuffix(rankList.getSuffix());
 
+
+
         }
     }
 

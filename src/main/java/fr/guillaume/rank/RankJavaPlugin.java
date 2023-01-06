@@ -25,7 +25,7 @@ public final class RankJavaPlugin extends JavaPlugin {
 
         Bukkit.getPluginManager().registerEvents(new PlayerListener(),this);
     }
-
+ //Test commit
 
     @Override
     public void onDisable() {
