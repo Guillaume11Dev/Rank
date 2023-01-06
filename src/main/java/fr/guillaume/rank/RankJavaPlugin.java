@@ -15,6 +15,8 @@ public final class RankJavaPlugin extends JavaPlugin {
     @Override
     public void onLoad() {
         rank = new Rank(this);
+
+
     }
 
     @Override

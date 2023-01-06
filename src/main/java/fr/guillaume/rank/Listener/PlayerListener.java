@@ -10,13 +10,15 @@ import org.bukkit.event.player.PlayerQuitEvent;
 public final class PlayerListener implements Listener {
 
     public PlayerListener() {
-        //RankJavaPlugin.instance().getRank();
+
     }
 
 
     @EventHandler
     private void playerJoin(PlayerJoinEvent pje){
 
+        
+       /* pje.getPlayer().setScoreboard(RankJavaPlugin.instance().getRank().getScoreboard()); */
     }
 
     @EventHandler
