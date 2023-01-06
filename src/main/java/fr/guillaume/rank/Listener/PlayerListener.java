@@ -7,8 +7,6 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import java.util.TimerTask;
-
 public final class PlayerListener implements Listener {
 
     public PlayerListener() {
@@ -31,12 +29,7 @@ public final class PlayerListener implements Listener {
     @EventHandler
     private void playerChat(AsyncPlayerChatEvent pce){
 
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
 
-            }
-        }
 
     }
 
