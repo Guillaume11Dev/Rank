@@ -1,7 +1,6 @@
 package fr.guillaume.rank;
 
 import com.google.common.collect.Maps;
-import jdk.tools.jlink.plugin.Plugin;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -42,8 +41,22 @@ public final class Rank {
         }
     }
 
-    public void onLoadPlayer(Player player){
+    public void loadPlayer(Player player){
         if (playerRanks.containsKey(player.getUniqueId().toString())) return;
         playerRanks.put(player.getUniqueId().toString(), RankList.PLAYER);
+    }
+    public void deletePlayer(Player player){
+        if (!playerRanks.containsKey(player.getUniqueId().toString())) return;
+        playerRanks.remove(player.getUniqueId().toString());
+
+
+
+    }
+
+
+    public RankList getPlayerRank(Player player){
+
+        if (playerRanks.containsKey(player.getUniqueId().toString())) loadPlayer(player);
+        return playerRanks.get(player.getUniqueId().toString());
     }
 }
