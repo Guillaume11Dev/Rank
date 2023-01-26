@@ -21,6 +21,8 @@ public final class RankJavaPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        instance = this;
+
         rank.initScoreboard();
 
         Bukkit.getPluginManager().registerEvents(new PlayerListener(),this);

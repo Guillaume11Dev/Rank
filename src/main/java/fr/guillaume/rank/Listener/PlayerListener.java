@@ -23,7 +23,6 @@ public final class PlayerListener implements Listener {
         pje.getPlayer().setScoreboard(rank.getScoreboard());
 
 
-
     }
 
     @EventHandler

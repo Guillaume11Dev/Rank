@@ -2,16 +2,17 @@ package fr.guillaume.rank;
 
 public enum RankList {
 
-    ADMINISTRATOR(100, "§4[Admin] ",""," §8§1>> §3"),
+    ADMINISTRATOR(0,100, "§4[Admin] ",""," §8§1>> §3"),
 
-    PLAYER(1, "§7", "", " > ");
+    PLAYER(1,1, "§7", "", " > ");
 
     //fields
-    private final int power;
+    private final int power, id;
     private final  String prefix, suffix, chatSeparator;
 
     //Constructor
-    private RankList(int power, String prefix, String suffix, String chatSeparator){
+    private RankList(int id,int power, String prefix, String suffix, String chatSeparator){
+        this.id = id;
         this.power = power;
         this.prefix = prefix;
         this.suffix = suffix;
@@ -20,6 +21,11 @@ public enum RankList {
     }
 
     //Methode GETTER
+
+    public int getId() {
+        return id;
+    }
+
     public int getPower() {
         return power;
     }
