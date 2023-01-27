@@ -18,26 +18,35 @@ public final class Rank {
     private final Map<String, RankList> playerRanks = Maps.newHashMap();
     private Scoreboard scoreboard;
     private final JavaPlugin plugin;
+
+    private  final String prefix = "§8[§4Rank§8] ";
     private FileConfiguration config;
     private File file;
 
     public Rank(JavaPlugin plugin) {
         this.plugin = plugin;
         initConfig();
+
     }
 
     public final JavaPlugin getPlugin() {
         return plugin;
     }
+
+    public String getPrefix() {
+        return prefix;
+    }
+
     public final Scoreboard getScoreboard() {
         return scoreboard;
     }
 
-    private void initConfig() {
+        /*private void initConfig() {
         File f = new File("plugins/rank");
         if (f.exists()) f.mkdirs();
         file = new File(f, "rank.yml");
         if (!file.exists()) {
+
             try {
                 file.createNewFile();
             } catch (IOException ioe) {
@@ -46,6 +55,18 @@ public final class Rank {
         }
         config = YamlConfiguration.loadConfiguration(file);
     }
+
+         */
+        private void initConfig() {
+            file = new File(RankJavaPlugin.instance().getDataFolder(),"rank.yml");
+            if (!file.exists()) {
+                file.getParentFile().mkdirs();
+                try { file.createNewFile(); }
+                catch (IOException e) { e.printStackTrace(); }
+            }
+            config = YamlConfiguration.loadConfiguration(file);
+        }
+
 
     public  void initScoreboard() {
         if (scoreboard != null) throw new UnsupportedOperationException("Le scoreboard est deja initialise.");
@@ -93,5 +114,28 @@ public final class Rank {
         try {
             config.save(file);
         }catch(IOException ioe){ioe.printStackTrace();}
+    }
+
+    public  boolean  hasPower(Player player, int power){
+
+        return  (getPlayerRank(player).getPower() == power);
+    }
+
+    public  boolean  hasPowerSup(Player player, int power){
+
+        return  (getPlayerRank(player).getPower() > power);
+    }
+
+    public  boolean  hasPowerInf(Player player, int power){
+
+        return  (getPlayerRank(player).getPower() < power);
+    }
+
+    public  void changeRank(Player player, RankList rankList){
+        deletePlayer(player);
+        config.set(player.getUniqueId().toString(), rankList.getId());
+        saveConfig();
+        deletePlayer(player);
+        loadPlayer(player);
     }
 }
